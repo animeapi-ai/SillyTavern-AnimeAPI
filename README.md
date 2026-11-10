@@ -59,10 +59,11 @@ The slash command takes optional arguments and returns the saved image path, so 
 | Orientation | Portrait | Portrait, square or landscape; same price |
 | Always add | empty | Text added to every prompt, for example your character's look |
 | Rewrite my prompt into tags | on | AnimeAPI turns plain sentences into tags for the anime model |
-| Allow NSFW output | on | This is AnimeAPI's own default. Turn it off and flagged images are refused and refunded. Applies to the anime model |
 | Hide generated images from the AI's context | on | The image message is not sent to your chat model |
 
 Chat text is cleaned of markdown and cut to AnimeAPI's 1,000-character prompt limit.
+
+AnimeAPI does not generate adult content. Explicit prompts are refused and not charged.
 
 ## Errors you may see
 
@@ -70,7 +71,7 @@ Chat text is cleaned of markdown and cut to AnimeAPI's 1,000-character prompt li
 | --- | --- |
 | Your AnimeAPI balance is empty | Add funds at <https://animeapi.ai/dashboard/billing> (from $5) |
 | AnimeAPI did not accept this key | Check the key at <https://animeapi.ai/dashboard/api-keys> |
-| The image was rejected: … | The model refused this prompt; the reason is shown and you are not charged |
+| The image was rejected: … | AnimeAPI refused this prompt; the reason it gives is shown and you are not charged |
 | AnimeAPI is busy | Temporary; try again in a few seconds. Failed images are refunded |
 
 ## Can I use SillyTavern's built-in Image Generation instead?

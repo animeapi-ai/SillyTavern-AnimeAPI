@@ -25,7 +25,6 @@ const defaultSettings = Object.freeze({
     model: 'anime',
     orientation: 'portrait',
     enhance: true,
-    allow_nsfw: true,
     prefix: '',
     hide_from_ai: true,
     last_balance: null,
@@ -47,7 +46,6 @@ const STRINGS = {
         model_ultra: 'ultra: follows long sentences, renders text',
         model_ultra_max: 'ultra-max: ultra with finer detail',
         enhance: 'Rewrite my prompt into tags (recommended for the anime model)',
-        allow_nsfw: 'Allow NSFW output (anime model)',
         hide_from_ai: 'Hide generated images from the AI\'s context',
         prefix: 'Always add',
         prefix_placeholder: 'e.g. your character\'s look: silver hair, red eyes, black coat',
@@ -92,7 +90,6 @@ const STRINGS = {
         model_ultra: 'ultra：理解长句，可渲染文字',
         model_ultra_max: 'ultra-max：细节更精致的 ultra',
         enhance: '自动把提示词改写为标签（anime 模型推荐）',
-        allow_nsfw: '允许 NSFW 输出（anime 模型）',
         hide_from_ai: '生成的图片不计入 AI 上下文',
         prefix: '固定附加',
         prefix_placeholder: '例如角色外貌：银发、红瞳、黑色外套',
@@ -137,7 +134,6 @@ const STRINGS = {
         model_ultra: 'ultra：長文に強く、文字も描ける',
         model_ultra_max: 'ultra-max：より精細な ultra',
         enhance: 'プロンプトをタグに自動変換（anime モデル推奨）',
-        allow_nsfw: 'NSFW 出力を許可（anime モデル）',
         hide_from_ai: '生成画像を AI のコンテキストに含めない',
         prefix: '常に追加',
         prefix_placeholder: '例：キャラの外見（銀髪、赤い瞳、黒いコート）',
@@ -237,7 +233,6 @@ async function callAnimeApi({ prompt, model, orientation }) {
         model,
         orientation,
         enhance: !!settings.enhance,
-        allowNSFW: !!settings.allow_nsfw,
     });
 
     for (let attempt = 1; ; attempt++) {
@@ -540,7 +535,6 @@ function addSettingsPanel() {
                     <input id="animeapi_prefix" class="text_pole" type="text" maxlength="300" placeholder="${esc(s('prefix_placeholder'))}">
                 </div>
                 <label class="checkbox_label" for="animeapi_enhance"><input id="animeapi_enhance" type="checkbox"><span>${esc(s('enhance'))}</span></label>
-                <label class="checkbox_label" for="animeapi_nsfw"><input id="animeapi_nsfw" type="checkbox"><span>${esc(s('allow_nsfw'))}</span></label>
                 <label class="checkbox_label" for="animeapi_hide"><input id="animeapi_hide" type="checkbox"><span>${esc(s('hide_from_ai'))}</span></label>
                 <div class="animeapi_status">
                     <span>${esc(s('price'))}: <b id="animeapi_price"></b></span>
@@ -573,10 +567,6 @@ function addSettingsPanel() {
     });
     $('#animeapi_enhance').prop('checked', settings.enhance).on('change', function () {
         settings.enhance = !!$(this).prop('checked');
-        saveSettings();
-    });
-    $('#animeapi_nsfw').prop('checked', settings.allow_nsfw).on('change', function () {
-        settings.allow_nsfw = !!$(this).prop('checked');
         saveSettings();
     });
     $('#animeapi_hide').prop('checked', settings.hide_from_ai).on('change', function () {
