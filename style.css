@@ -1,0 +1,41 @@
+#animeapi_settings .animeapi_row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin: 4px 0;
+}
+
+#animeapi_settings .animeapi_row > label {
+    flex: 0 0 110px;
+}
+
+#animeapi_settings .animeapi_row > .text_pole,
+#animeapi_settings .animeapi_row > select {
+    flex: 1;
+    margin: 0;
+}
+
+#animeapi_settings .animeapi_status {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin: 8px 0;
+    padding: 6px 10px;
+    border: 1px solid var(--SmartThemeBorderColor);
+    border-radius: 6px;
+}
+
+#animeapi_settings .animeapi_status b {
+    font-variant-numeric: tabular-nums;
+}
+
+#animeapi_settings .animeapi_hint {
+    opacity: 0.75;
+    font-size: 0.9em;
+    margin: 4px 0;
+}
+
+.animeapi_busy {
+    opacity: 0.5;
+    pointer-events: none;
+}
